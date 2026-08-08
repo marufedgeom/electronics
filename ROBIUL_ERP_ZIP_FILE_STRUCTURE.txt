@@ -1,7 +1,0 @@
-ROBIUL_ERP/
-├── index.html
-├── style.css
-├── app.js
-├── README.md
-└── assets/
-    └── placeholder.jpg (optional)
