@@ -6,7 +6,20 @@ const state = {
     scanner: null,
     theme: localStorage.getItem('theme') || 'light'
 };
+// ===== IMAGE SETTINGS LOGIC =====
+document.getElementById('saveImageSettings')?.addEventListener('click', function() {
+    const defaultUrl = document.getElementById('defaultImageUrl').value;
+    localStorage.setItem('defaultProductImage', defaultUrl);
+    showToast('Image settings saved!', 'success');
+});
 
+// Inventory রেন্ডারের সময় এই ইমেজ ব্যবহার করুন
+function getProductImage(productId) {
+    const defaultImage = localStorage.getItem('defaultProductImage') || 'https://via.placeholder.com/200x200/0a192f/f5a623?text=Product';
+    // আপনি যদি নির্দিষ্ট product এর জন্য ইমেজ সেট করতে চান
+    const productImages = JSON.parse(localStorage.getItem('productImages') || '{}');
+    return productImages[productId] || defaultImage;
+}
 // ===== LANGUAGE DICTIONARY =====
 const LANG = {
     en: {
