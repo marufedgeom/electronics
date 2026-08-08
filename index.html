@@ -1247,6 +1247,19 @@
                                 <div class="form-group"><label>API Key</label><input type="password" class="form-control" id="devApiKey" value="sk_test_xxxxxxxx" /></div>
                                 <div class="form-group"><label>API Secret</label><input type="password" class="form-control" id="devApiSecret" value="sk_test_yyyyyyyy" /></div>
                             </div>
+                            <!-- Settings এ যোগ করুন -->
+<div class="card">
+    <div class="card-title"><i class="icon fas fa-image"></i> Inventory Image Settings</div>
+    <div class="form-group">
+        <label>Default Product Image URL</label>
+        <input type="text" class="form-control" id="defaultImageUrl" value="https://via.placeholder.com/200x200/0a192f/f5a623?text=Product" />
+    </div>
+    <div class="form-group">
+        <label>Image Upload</label>
+        <input type="file" class="form-control" id="inventoryImageUpload" accept="image/*" multiple />
+    </div>
+    <button class="btn btn-accent" id="saveImageSettings"><i class="fas fa-save"></i> Save Image Settings</button>
+</div>
                             <div>
                                 <div class="form-group"><label>Theme</label>
                                     <select class="form-control" id="devThemeSelect">
@@ -1684,7 +1697,7 @@
             tbody.innerHTML = `
                 <tr><td>356789012345678</td><td>Samsung</td><td>Galaxy S24</td><td>8+256GB</td><td>320.000</td><td>450.000</td><td>12</td>
                     <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
-                <tr><td>123456789012345</td><td>Apple</td><td>iPhone 16</td><td>6+128GB</td><td>420.000</td><td>580.000</td><td>8</td>
+                <tr><td>123456789012345</td><td>Apple</td><td>iPhone 16</td><td>6+128GB</td><td>420.000</td><td>580.000</td><td>8</td>///////
                     <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
                 <tr><td>ACC-2025-001</td><td>Anker</td><td>Power Bank 20K</td><td>20000mAh</td><td>18.500</td><td>25.000</td><td>30</td>
                     <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
