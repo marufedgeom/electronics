@@ -526,3 +526,31 @@ if (document.readyState === 'loading') {
 } else {
     init();
 }
+// ===== LOGOUT FUNCTION =====
+document.querySelector('.nav-btn:last-child')?.addEventListener('click', function() {
+    if (confirm('Are you sure you want to logout?')) {
+        // Clear session
+        localStorage.removeItem('user');
+        sessionStorage.clear();
+        showToast('Logged out successfully', 'success');
+        // Redirect to login page (if you have one)
+        // window.location.href = 'login.html';
+        // Or just reload
+        setTimeout(() => location.reload(), 1000);
+    }
+});
+
+// Update navbar to show user status
+function updateUserStatus() {
+    const user = localStorage.getItem('user');
+    const adminBtn = document.querySelector('.nav-btn.accent');
+    if (adminBtn) {
+        if (user) {
+            adminBtn.innerHTML = `<i class="fas fa-user-shield"></i> Admin`;
+        } else {
+            adminBtn.innerHTML = `<i class="fas fa-user"></i> Login`;
+        }
+    }
+}
+// Call this on load
+updateUserStatus();
