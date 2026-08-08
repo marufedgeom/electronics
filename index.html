@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROBIUL ELECTRONICS · ERP 2027</title>
+    <!-- Font Awesome 6 (Pro-like icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Sans+Bengali&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Html5Qrcode -->
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript">
+    </script>
+    <style>
+        /* ===== 2027 ENTERPRISE DESIGN SYSTEM ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a192f;
+            --primary-light: #1a3a5c;
+            --primary-glow: #2a6a9c;
+            --accent: #f5a623;
+            --accent-glow: #f7c948;
+            --bg-body: #f0f4fe;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-glass: rgba(255, 255, 255, 0.25);
+            --text-main: #0a192f;
+            --text-muted: #4a6a8a;
+            --border-light: rgba(10, 25, 47, 0.08);
+            --shadow-card: 0 12px 48px rgba(10, 25, 47, 0.08);
+            --shadow-glow: 0 0 30px rgba(245, 166, 35, 0.15);
+            --radius: 20px;
+            --radius-sm: 12px;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-bn: 'Noto Sans Bengali', sans-serif;
+            --font-ar: 'Cairo', sans-serif;
+            --direction: ltr;
+            --text-align: left;
+            --sidebar-width: 280px;
+            --glass-blur: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --bg-body: #0d1117;
+            --bg-card: rgba(22, 27, 34, 0.9);
+            --bg-glass: rgba(22, 27, 34, 0.6);
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+            --border-light: rgba(255, 255, 255, 0.06);
+            --shadow-card: 0 12px 48px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 30px rgba(245, 166, 35, 0.08);
+        }
+
+        /* ===== RTL SUPPORT ===== */
+        [dir="rtl"] {
+            --direction: rtl;
+            --text-align: right;
+        }
+        [dir="rtl"] body {
+            font-family: var(--font-ar), var(--font-family);
+        }
+        [dir="rtl"] .sidebar {
+            border-right: none;
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .sidebar a {
+            border-left: none;
+            border-right: 3px solid transparent;
+        }
+        [dir="rtl"] .sidebar a:hover,
+        [dir="rtl"] .sidebar a.active {
+            border-right-color: var(--accent);
+        }
+        [dir="rtl"] .navbar-brand {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        [dir="rtl"] .ms-auto {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+        }
+        [dir="rtl"] .me-auto {
+            margin-right: 0 !important;
+            margin-left: auto !important;
+        }
+        [dir="rtl"] .table th,
+        [dir="rtl"] .table td {
+            text-align: right;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--bg-body);
+            color: var(--text-main);
+            direction: var(--direction);
+            text-align: var(--text-align);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: radial-gradient(ellipse at 10% 20%, rgba(245, 166, 35, 0.05) 0%, transparent 60%),
+                radial-gradient(ellipse at 90% 80%, rgba(26, 58, 92, 0.05) 0%, transparent 60%);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 25, 47, 0.05);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(245, 166, 35, 0.3);
+        }
+
+        /* ===== HEADER ===== */
+        .navbar {
+            background: rgba(10, 25, 47, 0.92);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            color: #fff;
+            padding: 0 32px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 4px 30px rgba(10, 25, 47, 0.15);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+        .navbar-brand .badge {
+            background: var(--accent);
+            color: #0a192f;
+            font-size: 0.55rem;
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 20px rgba(245, 166, 35, 0.25);
+        }
+        .navbar-brand i {
+            color: var(--accent);
+            filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.3));
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(4px);
+        }
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-1px);
+        }
+        .nav-btn.accent {
+            background: var(--accent);
+            color: #0a192f;
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.25);
+        }
+        .nav-btn.accent:hover {
+            background: var(--accent-glow);
+            box-shadow: 0 6px 25px rgba(245, 166, 35, 0.35);
+            transform: translateY(-2px);
+        }
+
+        /* ===== LANGUAGE & THEME SWITCHER ===== */
+        .lang-switch {
+            display: flex;
+            gap: 3px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            padding: 4px;
+            backdrop-filter: blur(4px);
+        }
+        .lang-switch button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .lang-switch button.active {
+            background: var(--accent);
+            color: #0a192f;
+            box-shadow: 0 2px 12px rgba(245, 166, 35, 0.2);
+        }
+        .lang-switch button:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        /* ===== LAYOUT ===== */
+        .app-wrapper {
+            display: flex;
+            min-height: calc(100vh - 72px);
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border-right: 1px solid var(--border-light);
+            padding: 20px 0;
+            flex-shrink: 0;
+            overflow-y: auto;
+            height: calc(100vh - 72px);
+            position: sticky;
+            top: 72px;
+            transition: background 0.3s ease;
+        }
+
+        .sidebar .user-card {
+            padding: 16px 24px 20px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 12px;
+        }
+        .sidebar .user-card .name {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar .user-card .name i {
+            color: var(--accent);
+        }
+        .sidebar .user-card .role {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            background: rgba(245, 166, 35, 0.1);
+            padding: 3px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 6px;
+            font-weight: 600;
+            border: 1px solid rgba(245, 166, 35, 0.15);
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 24px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: rgba(245, 166, 35, 0.06);
+            color: var(--text-main);
+            border-left-color: var(--accent);
+        }
+        .sidebar a .icon {
+            width: 24px;
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--primary-light);
+        }
+        .sidebar a.active .icon {
+            color: var(--accent);
+        }
+        .sidebar a .badge-notif {
+            background: var(--accent);
+            color: #0a192f;
+            font-size: 0.6rem;
+            padding: 1px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: auto;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 28px 32px;
+            overflow-y: auto;
+            height: calc(100vh - 72px);
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(4px);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-glow), var(--shadow-card);
+            transform: translateY(-2px);
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--primary);
+        }
+        .card-title .icon {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
+        /* ===== GRID ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+        @media (max-width: 1024px) {
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== STAT CARDS ===== */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: var(--radius-sm);
+            padding: 20px 18px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+        .stat-card .num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-card .lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .stat-card .icon-bg {
+            font-size: 1.8rem;
+            color: rgba(245, 166, 35, 0.15);
+            margin-bottom: 6px;
+        }
+
+        /* ===== TABLES ===== */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius-sm);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        table th {
+            text-align: var(--text-align);
+            padding: 14px 16px;
+            background: rgba(10, 25, 47, 0.03);
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-light);
+        }
+        table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: middle;
+        }
+        table tr:hover td {
+            background: rgba(245, 166, 35, 0.03);
+        }
+        .badge-status {
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .badge-status.active {
+            background: rgba(39, 174, 96, 0.12);
+            color: #27ae60;
+            border: 1px solid rgba(39, 174, 96, 0.2);
+        }
+        .badge-status.inactive {
+            background: rgba(192, 57, 43, 0.12);
+            color: #c0392b;
+            border: 1px solid rgba(192, 57, 43, 0.2);
+        }
+        .badge-status.pending {
+            background: rgba(245, 166, 35, 0.12);
+            color: #f5a623;
+            border: 1px solid rgba(245, 166, 35, 0.2);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            background: transparent;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(10, 25, 47, 0.15);
+        }
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 25, 47, 0.2);
+        }
+        .btn-accent {
+            background: var(--accent);
+            color: #0a192f;
+            box-shadow: 0 4px 20px rgba(245, 166, 35, 0.2);
+        }
+        .btn-accent:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
+        }
+        .btn-danger {
+            background: #c0392b;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+        }
+        .btn-success {
+            background: #27ae60;
+            color: #fff;
+        }
+        .btn-success:hover {
+            background: #2ecc71;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 2px solid var(--border-light);
+            color: var(--text-muted);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(10, 25, 47, 0.03);
+        }
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+        .btn-sm {
+            padding: 6px 16px;
+            font-size: 0.7rem;
+        }
+        .btn-xs {
+            padding: 4px 12px;
+            font-size: 0.6rem;
+        }
+
+        /* ===== FORMS ===== */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            color: var(--text-main);
+            transition: var(--transition);
+            outline: none;
+            font-family: inherit;
+        }
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .form-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .form-row .form-group {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        /* ===== SCANNER ===== */
+        #scanner-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: #0a192f;
+            position: relative;
+            aspect-ratio: 4/3;
+            box-shadow: 0 8px 32px rgba(10, 25, 47, 0.15);
+        }
+        #scanner-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .scanner-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 40%;
+            border: 3px dashed rgba(245, 166, 35, 0.6);
+            border-radius: 16px;
+            pointer-events: none;
+            box-shadow: 0 0 0 4000px rgba(10, 25, 47, 0.4);
+        }
+        .scanner-line {
+            position: absolute;
+            top: 25%;
+            left: 15%;
+            width: 70%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: scanMove 1.8s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+        }
+        @keyframes scanMove {
+            0%,
+            100% {
+                top: 25%;
+            }
+            50% {
+                top: 55%;
+            }
+        }
+        .scanner-status {
+            text-align: center;
+            padding: 10px 0 4px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .scanner-status .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: #c0392b;
+            transition: var(--transition);
+        }
+        .scanner-status .dot.active {
+            background: #27ae60;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1.2);
+            }
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: rgba(10, 25, 47, 0.92);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 12px 48px rgba(10, 25, 47, 0.2);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            pointer-events: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.success {
+            background: rgba(39, 174, 96, 0.92);
+        }
+        .toast.error {
+            background: rgba(192, 57, 43, 0.92);
+        }
+
+        /* ===== IMAGE EDITOR MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 25, 47, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-editor {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(10, 25, 47, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .modal-editor .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-editor .modal-title .close-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 0 8px;
+            transition: var(--transition);
+        }
+        .modal-editor .modal-title .close-btn:hover {
+            color: var(--text-main);
+            transform: rotate(90deg);
+        }
+        .modal-editor .editor-tools {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .modal-editor .editor-tools button {
+            padding: 8px 18px;
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            background: var(--bg-glass);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--text-main);
+        }
+        .modal-editor .editor-tools button:hover {
+            background: var(--accent);
+            color: #0a192f;
+            border-color: var(--accent);
+        }
+        .modal-editor .editor-canvas-wrap {
+            background: #0a192f;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            min-height: 200px;
+        }
+        .modal-editor .editor-canvas-wrap canvas {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .modal-editor .editor-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            justify-content: flex-end;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .app-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+                padding: 12px 16px;
+                backdrop-filter: blur(8px);
+            }
+            .sidebar .user-card {
+                display: none;
+            }
+            .sidebar a {
+                padding: 8px 16px;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                font-size: 0.75rem;
+            }
+            .sidebar a:hover,
+            .sidebar a.active {
+                border-bottom-color: var(--accent);
+                border-left-color: transparent;
+            }
+            .main-content {
+                padding: 16px;
+                height: auto;
+            }
+            .navbar {
+                padding: 0 16px;
+                height: auto;
+                min-height: 64px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .lang-switch button {
+                padding: 3px 10px;
+                font-size: 0.6rem;
+            }
+            #scanner-container {
+                max-width: 100%;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .text-muted {
+            color: var(--text-muted);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-2 {
+            margin-top: 14px;
+        }
+        .mb-2 {
+            margin-bottom: 14px;
+        }
+        .flex {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .chip {
+            background: rgba(10, 25, 47, 0.04);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .glow-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .navbar,
+            .sidebar,
+            .nav-actions,
+            .btn {
+                display: none !important;
+            }
+            .app-wrapper {
+                display: block !important;
+            }
+            .main-content {
+                padding: 0 !important;
+                height: auto !important;
+            }
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="mainNav">
+        <div class="navbar-brand">
+            <i class="fas fa-microchip"></i>
+            ROBIUL ELECTRONICS
+            <span class="badge">ERP 2027</span>
+        </div>
+        <div class="nav-actions">
+            <div class="lang-switch" id="langSwitch">
+                <button class="active" data-lang="en">EN</button>
+                <button data-lang="bn">বাংলা</button>
+                <button data-lang="ar">العربية</button>
+            </div>
+            <button class="nav-btn accent"><i class="fas fa-user-shield"></i> Admin</button>
+            <button class="nav-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </nav>
+
+    <!-- ===== APP WRAPPER ===== -->
+    <div class="app-wrapper">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="user-card">
+                <div class="name"><i class="fas fa-user-circle"></i> Admin Owner</div>
+                <div class="role"><i class="fas fa-crown"></i> Super Admin</div>
+            </div>
+            <a href="#" class="active" data-page="dashboard"><span class="icon"><i class="fas fa-chart-pie"></i></span> Dashboard <span class="badge-notif">Live</span></a>
+            <a href="#" data-page="pos"><span class="icon"><i class="fas fa-cash-register"></i></span> POS &amp; Scanner</a>
+            <a href="#" data-page="inventory"><span class="icon"><i class="fas fa-boxes"></i></span> Inventory</a>
+            <a href="#" data-page="accounts"><span class="icon"><i class="fas fa-coins"></i></span> Accounts &amp; P&L</a>
+            <a href="#" data-page="expenses"><span class="icon"><i class="fas fa-file-invoice-dollar"></i></span> Expenses</a>
+            <a href="#" data-page="services"><span class="icon"><i class="fas fa-wifi"></i></span> Services &amp; Bills</a>
+            <a href="#" data-page="reports"><span class="icon"><i class="fas fa-file-alt"></i></span> Reports &amp; Print</a>
+            <a href="#" data-page="recycle"><span class="icon"><i class="fas fa-trash-alt"></i></span> Recycle Bin</a>
+            <a href="#" data-page="backup"><span class="icon"><i class="fas fa-database"></i></span> Backup &amp; Restore</a>
+            <a href="#" data-page="settings"><span class="icon"><i class="fas fa-cogs"></i></span> Settings</a>
+        </aside>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content" id="mainContent">
+
+            <!-- ===== DASHBOARD ===== -->
+            <section id="page-dashboard" class="page-section">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-chart-pie" style="color:var(--accent);"></i> Dashboard</h2>
+                    <span style="color:var(--text-muted);font-size:0.9rem;" id="dashboardDate"></span>
+                </div>
+                <div class="grid-4" id="dashboardStats">
+                    <div class="stat-card"><div class="icon-bg"><i class="fas fa-shopping-cart"></i></div><div class="num" id="statTotalSales">0.000 OMR</div><div class="lbl">Total Sales</div></div>
+                    <div class="stat-card"><div class="icon-bg"><i class="fas fa-chart-line"></i></div><div class="num" id="statOrders">0</div><div class="lbl">Orders</div></div>
+                    <div class="stat-card"><div class="icon-bg"><i class="fas fa-box"></i></div><div class="num" id="statProducts">0</div><div class="lbl">Products</div></div>
+                    <div class="stat-card"><div class="icon-bg"><i class="fas fa-coins"></i></div><div class="num" id="statProfit">0.000 OMR</div><div class="lbl">Net Profit</div></div>
+                </div>
+                <div class="grid-2 mt-2">
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-clock"></i> Recent Transactions</div>
+                        <div id="recentTx" style="max-height:240px;overflow-y:auto;">
+                            <div class="empty-state">No transactions yet</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-bolt"></i> Quick Actions</div>
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <button class="btn btn-accent" onclick="navigateTo('pos')"><i class="fas fa-cash-register"></i> Open POS &amp; Scanner</button>
+                            <button class="btn btn-primary" onclick="navigateTo('inventory')"><i class="fas fa-boxes"></i> Manage Inventory</button>
+                            <button class="btn btn-glass" onclick="navigateTo('reports')"><i class="fas fa-file-alt"></i> Generate Reports</button>
+                            <button class="btn btn-outline" onclick="navigateTo('backup')"><i class="fas fa-database"></i> Backup System</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== POS & SCANNER ===== -->
+            <section id="page-pos" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-cash-register" style="color:var(--accent);"></i> POS &amp; Barcode Scanner</h2>
+                    <span class="chip" id="posStoreName">ROBIUL ELECTRONICS</span>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-qrcode"></i> Scanner <span style="font-weight:400;font-size:0.75rem;color:var(--text-muted);">(2027 Swift Scan)</span></div>
+                        <div id="scanner-container">
+                            <div class="scanner-overlay"></div>
+                            <div class="scanner-line"></div>
+                        </div>
+                        <div class="scanner-status">
+                            <span class="dot active" id="posScannerDot"></span>
+                            <span id="posScannerStatus">📷 Camera ready — point at barcode</span>
+                        </div>
+                        <div class="form-row mt-2">
+                            <input type="text" class="form-control" id="posManualBarcode" placeholder="Type barcode or IMEI" />
+                            <button class="btn btn-accent" id="posManualAddBtn"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                        <div id="posProductList" style="max-height:240px;overflow-y:auto;margin-top:12px;">
+                            <div class="empty-state">Search or scan to add products</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-shopping-cart"></i> Cart <span style="font-weight:400;font-size:0.8rem;color:var(--text-muted);" id="posCartCount">0 items</span></div>
+                        <div id="posCartItems" style="max-height:200px;overflow-y:auto;"></div>
+                        <div class="cart-summary" style="background:rgba(10,25,47,0.03);border-radius:var(--radius-sm);padding:16px 20px;margin-top:12px;border:1px solid var(--border-light);">
+                            <div class="flex-between"><span>Subtotal</span><span id="posSubtotal">0.000 OMR</span></div>
+                            <div class="flex-between"><span>VAT (5%)</span><span id="posVat">0.000 OMR</span></div>
+                            <div class="flex-between" style="font-weight:700;font-size:1.2rem;border-top:2px solid var(--border-light);padding-top:10px;margin-top:8px;"><span>Total</span><span id="posTotal">0.000 OMR</span></div>
+                        </div>
+                        <div class="flex mt-2">
+                            <button class="btn btn-success" style="flex:1;" id="posCheckoutBtn"><i class="fas fa-check"></i> Checkout</button>
+                            <button class="btn btn-outline" id="posClearCartBtn"><i class="fas fa-trash"></i> Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== INVENTORY ===== -->
+            <section id="page-inventory" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-boxes" style="color:var(--accent);"></i> Inventory</h2>
+                    <button class="btn btn-accent" id="addProductBtn"><i class="fas fa-plus"></i> Add Product</button>
+                </div>
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>IMEI / Barcode</th><th>Brand</th><th>Model</th><th>Variant</th><th>Cost (OMR)</th><th>Sale (OMR)</th><th>Stock</th><th>Actions</th></tr></thead>
+                            <tbody id="inventoryTableBody">
+                                <tr><td colspan="8" class="text-center text-muted" style="padding:24px;">No products found</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ACCOUNTS & P&L ===== -->
+            <section id="page-accounts" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-coins" style="color:var(--accent);"></i> Accounts &amp; Profit/Loss</h2>
+                    <div class="flex">
+                        <button class="btn btn-primary btn-sm" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
+                        <button class="btn btn-glass btn-sm"><i class="fas fa-file-pdf"></i> PDF</button>
+                    </div>
+                </div>
+                <div class="grid-3 mb-2">
+                    <div class="stat-card"><div class="icon-bg"><i class="fas fa-dollar-sign"></i></div><div class="num" id="accTotalRevenue">0.000 OMR</div><div class="lbl">Revenue</div></div>
+                    <div class="stat-card"><div class="icon-bg"><i class="fas fa-truck"></i></div><div class="num" id="accTotalCost">0.000 OMR</div><div class="lbl">Cost of Goods</div></div>
+                    <div class="stat-card"><div class="icon-bg"><i class="fas fa-chart-pie"></i></div><div class="num" id="accNetProfit">0.000 OMR</div><div class="lbl">Net Profit</div></div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><i class="icon fas fa-list"></i> Transaction Log</div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Date</th><th>Items</th><th>Revenue</th><th>Cost</th><th>Profit</th><th>User</th></tr></thead>
+                            <tbody id="accountsTableBody">
+                                <tr><td colspan="6" class="text-center text-muted" style="padding:24px;">No transactions recorded</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== EXPENSES ===== -->
+            <section id="page-expenses" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-file-invoice-dollar" style="color:var(--accent);"></i> Expenses</h2>
+                    <button class="btn btn-accent" id="addExpenseBtn"><i class="fas fa-plus"></i> Add Expense</button>
+                </div>
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Amount (OMR)</th><th>Status</th><th>Actions</th></tr></thead>
+                            <tbody id="expensesTableBody">
+                                <tr><td colspan="6" class="text-center text-muted" style="padding:24px;">No expenses recorded</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== SERVICES & BILLS ===== -->
+            <section id="page-services" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-wifi" style="color:var(--accent);"></i> Services &amp; Telecom Bills</h2>
+                    <button class="btn btn-accent" id="addServiceBtn"><i class="fas fa-plus"></i> New Service</button>
+                </div>
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Service Type</th><th>Customer</th><th>Amount (OMR)</th><th>Status</th><th>Commission</th><th>Actions</th></tr></thead>
+                            <tbody id="servicesTableBody">
+                                <tr><td colspan="6" class="text-center text-muted" style="padding:24px;">No services found</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== REPORTS & PRINT ===== -->
+            <section id="page-reports" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-file-alt" style="color:var(--accent);"></i> Reports &amp; Print</h2>
+                    <div class="flex">
+                        <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Print All</button>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-chart-bar"></i> Sales Report</div>
+                        <div class="form-row">
+                            <div class="form-group"><label>From</label><input type="date" class="form-control" /></div>
+                            <div class="form-group"><label>To</label><input type="date" class="form-control" /></div>
+                        </div>
+                        <button class="btn btn-accent"><i class="fas fa-file-pdf"></i> Generate PDF</button>
+                        <button class="btn btn-outline"><i class="fas fa-print"></i> Print</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-coins"></i> Profit &amp; Loss Summary</div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Month</label><select class="form-control"><option>January</option><option>February</option></select></div>
+                            <div class="form-group"><label>Year</label><select class="form-control"><option>2025</option><option>2026</option></select></div>
+                        </div>
+                        <button class="btn btn-accent"><i class="fas fa-file-pdf"></i> Generate</button>
+                        <button class="btn btn-outline"><i class="fas fa-print"></i> Print</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-box"></i> Inventory Report</div>
+                        <button class="btn btn-accent"><i class="fas fa-file-pdf"></i> Export PDF</button>
+                        <button class="btn btn-outline"><i class="fas fa-print"></i> Print</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-users"></i> Staff &amp; User Report</div>
+                        <button class="btn btn-accent"><i class="fas fa-file-pdf"></i> Export PDF</button>
+                        <button class="btn btn-outline"><i class="fas fa-print"></i> Print</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== RECYCLE BIN ===== -->
+            <section id="page-recycle" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-trash-alt" style="color:var(--accent);"></i> Recycle Bin</h2>
+                    <span class="chip" id="recycleCount">0 items</span>
+                </div>
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Original Type</th><th>Identifier</th><th>Deleted At</th><th>Actions</th></tr></thead>
+                            <tbody id="recycleTableBody">
+                                <tr><td colspan="4" class="text-center text-muted" style="padding:24px;">Trash is empty</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== BACKUP & RESTORE ===== -->
+            <section id="page-backup" class="page-section hidden">
+                <div class="flex-between mb-2">
+                    <h2 style="font-size:1.8rem;font-weight:800;"><i class="fas fa-database" style="color:var(--accent);"></i> Backup &amp; Restore</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-download"></i> Generate Backup</div>
+                        <p class="text-muted" style="margin-bottom:12px;">Create a compressed SQL dump of all system data.</p>
+                        <button class="btn btn-primary" id="backupGenerateBtn"><i class="fas fa-file-archive"></i> Generate &amp; Download</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-upload"></i> Restore from Backup</div>
+                        <div class="form-group">
+                            <label>Select .sql file</label>
+                            <input type="file" class="form-control" id="restoreFileInput" accept=".sql" />
+                        </div>
+                        <button class="btn btn-danger" id="restoreExecuteBtn"><i class="fas fa-undo"></i> Restore Database</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== SETTINGS ===== -->
+            <section id="page-settings" class="page-section hidden">
+                <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:16px;"><i class="fas fa-cogs" style="color:var(--accent);"></i> Settings</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-store"></i> Store Information</div>
+                        <div class="form-group"><label>Shop Name</label><input type="text" class="form-control" id="setShopName" value="ROBIUL ELECTRONICS" /></div>
+                        <div class="form-group"><label>Legal Entity</label><input type="text" class="form-control" id="setLegalName" value="AL WAHA AL KHDRA AL MUTAKAMILAH TRADING" /></div>
+                        <div class="form-group"><label>CR Number</label><input type="text" class="form-control" id="setCR" value="1374092" /></div>
+                        <div class="form-group"><label>Currency</label><input type="text" class="form-control" id="setCurrency" value="OMR" readonly /></div>
+                        <button class="btn btn-success" id="setSaveStore"><i class="fas fa-save"></i> Save</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-title"><i class="icon fas fa-cog"></i> Tax &amp; System</div>
+                        <div class="form-group"><label>VAT Rate (%)</label><input type="number" class="form-control" id="setTaxRate" value="5" step="0.5" /></div>
+                        <div class="form-group"><label>Enable VAT</label>
+                            <select class="form-control" id="setVatEnabled">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-success" id="setSaveTax"><i class="fas fa-save"></i> Save Tax Settings</button>
+                        <hr style="margin:16px 0;border-color:var(--border-light);" />
+                        <button class="btn btn-danger" id="setClearAllData"><i class="fas fa-trash"></i> Clear All Data</button>
+                    </div>
+                    <!-- ===== DEVELOPER & SYSTEM SETTINGS ===== -->
+                    <div class="card" style="grid-column: 1 / -1;">
+                        <div class="card-title"><i class="icon fas fa-code"></i> Developer &amp; System Settings</div>
+                        <div class="grid-2">
+                            <div>
+                                <div class="form-group"><label>API Base URL</label><input type="text" class="form-control" id="devApiUrl" value="https://erp.yourcompany.com" /></div>
+                                <div class="form-group"><label>API Key</label><input type="password" class="form-control" id="devApiKey" value="sk_test_xxxxxxxx" /></div>
+                                <div class="form-group"><label>API Secret</label><input type="password" class="form-control" id="devApiSecret" value="sk_test_yyyyyyyy" /></div>
+                            </div>
+                            <div>
+                                <div class="form-group"><label>Theme</label>
+                                    <select class="form-control" id="devThemeSelect">
+                                        <option value="light">Light</option>
+                                        <option value="dark">Dark</option>
+                                        <option value="system">System</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"><label>Debug Mode</label>
+                                    <select class="form-control" id="devDebugMode">
+                                        <option value="0">Off</option>
+                                        <option value="1">On</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"><label>Cache TTL (seconds)</label><input type="number" class="form-control" id="devCacheTtl" value="3600" /></div>
+                            </div>
+                        </div>
+                        <div class="flex mt-2">
+                            <button class="btn btn-accent" id="saveDevSettings"><i class="fas fa-save"></i> Save Developer Settings</button>
+                            <button class="btn btn-danger" id="resetAppBtn"><i class="fas fa-trash"></i> Reset App Data</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ===== IMAGE EDITOR MODAL ===== -->
+    <div class="modal-overlay" id="imageEditorModal">
+        <div class="modal-editor">
+            <div class="modal-title">
+                <span><i class="fas fa-edit" style="color:var(--accent);"></i> Image Editor</span>
+                <button class="close-btn" id="closeEditorBtn">✕</button>
+            </div>
+            <div class="editor-tools">
+                <button id="rotateBtn"><i class="fas fa-undo"></i> Rotate</button>
+                <button id="cropBtn"><i class="fas fa-crop"></i> Crop</button>
+                <button id="brightnessBtn"><i class="fas fa-sun"></i> Brightness</button>
+                <button id="contrastBtn"><i class="fas fa-adjust"></i> Contrast</button>
+                <button id="resetImgBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+            </div>
+            <div class="editor-canvas-wrap">
+                <canvas id="imgEditorCanvas" width="400" height="300"></canvas>
+            </div>
+            <div class="editor-actions">
+                <button class="btn btn-primary" id="uploadImageBtn"><i class="fas fa-upload"></i> Upload New</button>
+                <button class="btn btn-accent" id="saveImageBtn"><i class="fas fa-check"></i> Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast"></div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ================================================================
+        //  TRI-LANGUAGE ENGINE (EN / BN / AR)
+        // ================================================================
+        const LANG = {
+            en: {
+                dashboard: 'Dashboard',
+                pos: 'POS & Scanner',
+                inventory: 'Inventory',
+                accounts: 'Accounts & P&L',
+                expenses: 'Expenses',
+                services: 'Services & Bills',
+                reports: 'Reports & Print',
+                recycle: 'Recycle Bin',
+                backup: 'Backup & Restore',
+                settings: 'Settings',
+                totalSales: 'Total Sales',
+                orders: 'Orders',
+                products: 'Products',
+                netProfit: 'Net Profit',
+                noTransactions: 'No transactions yet',
+                openPOS: 'Open POS & Scanner',
+                manageInventory: 'Manage Inventory',
+                generateReports: 'Generate Reports',
+                backupSystem: 'Backup System',
+                addProduct: 'Add Product',
+                imeiBarcode: 'IMEI / Barcode',
+                brand: 'Brand',
+                model: 'Model',
+                variant: 'Variant',
+                costOMR: 'Cost (OMR)',
+                saleOMR: 'Sale (OMR)',
+                stock: 'Stock',
+                actions: 'Actions',
+                searchProduct: 'Scan / Search Product',
+                cart: 'Cart',
+                subtotal: 'Subtotal',
+                vat: 'VAT (5%)',
+                total: 'Total',
+                checkout: 'Checkout',
+                clear: 'Clear',
+                revenue: 'Revenue',
+                costOfGoods: 'Cost of Goods',
+                netProfitLabel: 'Net Profit',
+                transactionLog: 'Transaction Log',
+                serviceType: 'Service Type',
+                customer: 'Customer',
+                amount: 'Amount (OMR)',
+                status: 'Status',
+                commission: 'Commission',
+                newService: 'New Service',
+                recycleBin: 'Recycle Bin',
+                restore: 'Restore',
+                purge: 'Permanent Purge',
+                generateBackup: 'Generate Backup',
+                restoreFromBackup: 'Restore from Backup',
+                selectFile: 'Select .sql file',
+                restoreDatabase: 'Restore Database',
+                shopName: 'Shop Name',
+                legalEntity: 'Legal Entity',
+                crNumber: 'CR Number',
+                currency: 'Currency',
+                vatRate: 'VAT Rate (%)',
+                enableVat: 'Enable VAT',
+                yes: 'Yes',
+                no: 'No',
+                save: 'Save',
+                clearAllData: 'Clear All Data',
+                confirmPurge: 'Are you sure you want to permanently purge this item?',
+                confirmClearAll: 'This will DELETE ALL data. Are you sure?',
+                backupSuccess: 'Backup generated successfully',
+                restoreSuccess: 'Database restored successfully',
+                error: 'Error',
+                success: 'Success',
+                imageEditor: 'Image Editor',
+                rotate: 'Rotate',
+                crop: 'Crop',
+                brightness: 'Brightness',
+                contrast: 'Contrast',
+                reset: 'Reset',
+                uploadNew: 'Upload New',
+                saveChanges: 'Save Changes'
+            },
+            bn: {
+                dashboard: 'ড্যাশবোর্ড',
+                pos: 'পিওএস ও স্ক্যানার',
+                inventory: 'ইনভেন্টরি',
+                accounts: 'অ্যাকাউন্টস ও পিএন্ডএল',
+                expenses: 'খরচ',
+                services: 'সেবা ও বিল',
+                reports: 'রিপোর্ট ও প্রিন্ট',
+                recycle: 'রিসাইকেল বিন',
+                backup: 'ব্যাকআপ ও রিস্টোর',
+                settings: 'সেটিংস',
+                totalSales: 'মোট বিক্রয়',
+                orders: 'অর্ডার',
+                products: 'পণ্য',
+                netProfit: 'নিট লাভ',
+                noTransactions: 'কোনো লেনদেন নেই',
+                openPOS: 'পিওএস ও স্ক্যানার খুলুন',
+                manageInventory: 'ইনভেন্টরি পরিচালনা',
+                generateReports: 'রিপোর্ট তৈরি করুন',
+                backupSystem: 'ব্যাকআপ সিস্টেম',
+                addProduct: 'পণ্য যোগ করুন',
+                imeiBarcode: 'আইএমইআই / বারকোড',
+                brand: 'ব্র্যান্ড',
+                model: 'মডেল',
+                variant: 'ভেরিয়েন্ট',
+                costOMR: 'মূল্য (ওএমআর)',
+                saleOMR: 'বিক্রয় (ওএমআর)',
+                stock: 'স্টক',
+                actions: 'কর্ম',
+                searchProduct: 'স্ক্যান / পণ্য খুঁজুন',
+                cart: 'কার্ট',
+                subtotal: 'সাবটোটাল',
+                vat: 'ভ্যাট (৫%)',
+                total: 'মোট',
+                checkout: 'চেকআউট',
+                clear: 'পরিষ্কার',
+                revenue: 'রাজস্ব',
+                costOfGoods: 'পণ্যের মূল্য',
+                netProfitLabel: 'নিট লাভ',
+                transactionLog: 'লেনদেন লগ',
+                serviceType: 'সেবার ধরন',
+                customer: 'গ্রাহক',
+                amount: 'পরিমাণ (ওএমআর)',
+                status: 'অবস্থা',
+                commission: 'কমিশন',
+                newService: 'নতুন সেবা',
+                recycleBin: 'রিসাইকেল বিন',
+                restore: 'পুনরুদ্ধার',
+                purge: 'স্থায়ী মুছে ফেলা',
+                generateBackup: 'ব্যাকআপ তৈরি করুন',
+                restoreFromBackup: 'ব্যাকআপ থেকে পুনরুদ্ধার',
+                selectFile: '.sql ফাইল নির্বাচন করুন',
+                restoreDatabase: 'ডাটাবেস পুনরুদ্ধার',
+                shopName: 'দোকানের নাম',
+                legalEntity: 'আইনি সত্তা',
+                crNumber: 'সিআর নম্বর',
+                currency: 'মুদ্রা',
+                vatRate: 'ভ্যাট হার (%)',
+                enableVat: 'ভ্যাট সক্রিয়',
+                yes: 'হ্যাঁ',
+                no: 'না',
+                save: 'সংরক্ষণ',
+                clearAllData: 'সব ডেটা মুছে ফেলুন',
+                confirmPurge: 'আপনি কি নিশ্চিত যে আপনি এই আইটেমটি স্থায়ীভাবে মুছে ফেলতে চান?',
+                confirmClearAll: 'এটি সমস্ত ডেটা মুছে ফেলবে। আপনি কি নিশ্চিত?',
+                backupSuccess: 'ব্যাকআপ সফলভাবে তৈরি করা হয়েছে',
+                restoreSuccess: 'ডাটাবেস সফলভাবে পুনরুদ্ধার করা হয়েছে',
+                error: 'ত্রুটি',
+                success: 'সফল',
+                imageEditor: 'ইমেজ এডিটর',
+                rotate: 'ঘোরান',
+                crop: 'ক্রপ',
+                brightness: 'উজ্জ্বলতা',
+                contrast: 'কনট্রাস্ট',
+                reset: 'রিসেট',
+                uploadNew: 'নতুন আপলোড',
+                saveChanges: 'পরিবর্তন সংরক্ষণ'
+            },
+            ar: {
+                dashboard: 'لوحة القيادة',
+                pos: 'نقطة البيع والماسح',
+                inventory: 'المخزون',
+                accounts: 'الحسابات والأرباح والخسائر',
+                expenses: 'المصروفات',
+                services: 'الخدمات والفواتير',
+                reports: 'التقارير والطباعة',
+                recycle: 'سلة المحذوفات',
+                backup: 'النسخ الاحتياطي والاستعادة',
+                settings: 'الإعدادات',
+                totalSales: 'إجمالي المبيعات',
+                orders: 'الطلبات',
+                products: 'المنتجات',
+                netProfit: 'صافي الربح',
+                noTransactions: 'لا توجد معاملات',
+                openPOS: 'فتح نقطة البيع والماسح',
+                manageInventory: 'إدارة المخزون',
+                generateReports: 'إنشاء التقارير',
+                backupSystem: 'نظام النسخ الاحتياطي',
+                addProduct: 'إضافة منتج',
+                imeiBarcode: 'IMEI / الرمز الشريطي',
+                brand: 'العلامة التجارية',
+                model: 'الموديل',
+                variant: 'النسخة',
+                costOMR: 'التكلفة (OMR)',
+                saleOMR: 'سعر البيع (OMR)',
+                stock: 'المخزون',
+                actions: 'الإجراءات',
+                searchProduct: 'مسح / البحث عن منتج',
+                cart: 'السلة',
+                subtotal: 'المجموع الفرعي',
+                vat: 'ضريبة القيمة المضافة (5%)',
+                total: 'الإجمالي',
+                checkout: 'الدفع',
+                clear: 'مسح',
+                revenue: 'الإيرادات',
+                costOfGoods: 'تكلفة البضائع',
+                netProfitLabel: 'صافي الربح',
+                transactionLog: 'سجل المعاملات',
+                serviceType: 'نوع الخدمة',
+                customer: 'العميل',
+                amount: 'المبلغ (OMR)',
+                status: 'الحالة',
+                commission: 'العمولة',
+                newService: 'خدمة جديدة',
+                recycleBin: 'سلة المحذوفات',
+                restore: 'استعادة',
+                purge: 'حذف دائم',
+                generateBackup: 'إنشاء نسخة احتياطية',
+                restoreFromBackup: 'استعادة من النسخة الاحتياطية',
+                selectFile: 'اختر ملف .sql',
+                restoreDatabase: 'استعادة قاعدة البيانات',
+                shopName: 'اسم المتجر',
+                legalEntity: 'الكيان القانوني',
+                crNumber: 'رقم السجل التجاري',
+                currency: 'العملة',
+                vatRate: 'نسبة ضريبة القيمة المضافة (%)',
+                enableVat: 'تفعيل ضريبة القيمة المضافة',
+                yes: 'نعم',
+                no: 'لا',
+                save: 'حفظ',
+                clearAllData: 'مسح جميع البيانات',
+                confirmPurge: 'هل أنت متأكد أنك تريد حذف هذا العنصر بشكل دائم؟',
+                confirmClearAll: 'سيؤدي هذا إلى حذف جميع البيانات. هل أنت متأكد؟',
+                backupSuccess: 'تم إنشاء النسخة الاحتياطية بنجاح',
+                restoreSuccess: 'تمت استعادة قاعدة البيانات بنجاح',
+                error: 'خطأ',
+                success: 'نجاح',
+                imageEditor: 'محرر الصور',
+                rotate: 'تدوير',
+                crop: 'قص',
+                brightness: 'السطوع',
+                contrast: 'التباين',
+                reset: 'إعادة تعيين',
+                uploadNew: 'رفع جديد',
+                saveChanges: 'حفظ التغييرات'
+            }
+        };
+
+        let currentLang = 'en';
+        let currentPage = 'dashboard';
+
+        // ================================================================
+        //  TOAST
+        // ================================================================
+        let toastTimeout = null;
+
+        function showToast(msg, type = '') {
+            const el = document.getElementById('toast');
+            el.textContent = msg;
+            el.className = 'toast ' + type;
+            clearTimeout(toastTimeout);
+            void el.offsetWidth;
+            el.classList.add('show');
+            toastTimeout = setTimeout(() => el.classList.remove('show'), 3000);
+        }
+
+        // ================================================================
+        //  NAVIGATION
+        // ================================================================
+        function navigateTo(page) {
+            currentPage = page;
+            document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.remove('hidden');
+            document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+            const link = document.querySelector(`.sidebar a[data-page="${page}"]`);
+            if (link) link.classList.add('active');
+            if (page === 'dashboard') renderDashboard();
+            else if (page === 'pos') renderPOS();
+            else if (page === 'inventory') renderInventory();
+            else if (page === 'accounts') renderAccounts();
+            else if (page === 'expenses') renderExpenses();
+            else if (page === 'services') renderServices();
+            else if (page === 'reports') renderReports();
+            else if (page === 'recycle') renderRecycle();
+            else if (page === 'backup') renderBackup();
+            else if (page === 'settings') renderSettings();
+        }
+
+        document.querySelectorAll('.sidebar a').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                navigateTo(this.dataset.page);
+            });
+        });
+
+        // ================================================================
+        //  LANGUAGE SWITCH
+        // ================================================================
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b.dataset.lang ===
+            lang));
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+            const t = LANG[lang];
+            const pages = ['dashboard', 'pos', 'inventory', 'accounts', 'expenses', 'services', 'reports', 'recycle',
+                'backup', 'settings'
+            ];
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            sidebarLinks.forEach((link, idx) => {
+                if (idx < pages.length) {
+                    const icon = link.querySelector('.icon')?.innerHTML || '';
+                    link.innerHTML = `${icon} ${t[pages[idx]] || pages[idx]}`;
+                }
+            });
+            const labels = document.querySelectorAll('.stat-card .lbl');
+            if (labels.length >= 4) {
+                labels[0].textContent = t.totalSales;
+                labels[1].textContent = t.orders;
+                labels[2].textContent = t.products;
+                labels[3].textContent = t.netProfit;
+            }
+            const titles = {
+                dashboard: t.dashboard,
+                pos: t.pos,
+                inventory: t.inventory,
+                accounts: t.accounts,
+                expenses: t.expenses,
+                services: t.services,
+                reports: t.reports,
+                recycle: t.recycle,
+                backup: t.backup,
+                settings: t.settings,
+            };
+            document.querySelectorAll('.page-section h2').forEach(h2 => {
+                const page = h2.closest('.page-section')?.id?.replace('page-', '');
+                if (page && titles[page]) {
+                    const icon = h2.querySelector('i')?.outerHTML || '';
+                    h2.innerHTML = `${icon} ${titles[page]}`;
+                }
+            });
+            showToast('Language: ' + lang.toUpperCase(), 'success');
+        }
+
+        document.querySelectorAll('.lang-switch button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                setLanguage(this.dataset.lang);
+            });
+        });
+
+        // ================================================================
+        //  DASHBOARD
+        // ================================================================
+        function renderDashboard() {
+            document.getElementById('dashboardDate').textContent = new Date().toLocaleString();
+            document.getElementById('statTotalSales').textContent = '4,850.000 OMR';
+            document.getElementById('statOrders').textContent = '42';
+            document.getElementById('statProducts').textContent = '156';
+            document.getElementById('statProfit').textContent = '1,230.500 OMR';
+            const recent = document.getElementById('recentTx');
+            recent.innerHTML = `
+                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-light);">
+                    <div><strong>#INV-2025-001</strong><br><span class="text-muted" style="font-size:0.8rem;">10 min ago</span></div>
+                    <div>45.000 OMR</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-light);">
+                    <div><strong>#INV-2025-002</strong><br><span class="text-muted" style="font-size:0.8rem;">35 min ago</span></div>
+                    <div>120.000 OMR</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:8px 0;">
+                    <div><strong>#INV-2025-003</strong><br><span class="text-muted" style="font-size:0.8rem;">2 hours ago</span></div>
+                    <div>78.500 OMR</div>
+                </div>
+            `;
+        }
+
+        // ================================================================
+        //  INVENTORY
+        // ================================================================
+        function renderInventory() {
+            const tbody = document.getElementById('inventoryTableBody');
+            tbody.innerHTML = `
+                <tr><td>356789012345678</td><td>Samsung</td><td>Galaxy S24</td><td>8+256GB</td><td>320.000</td><td>450.000</td><td>12</td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>123456789012345</td><td>Apple</td><td>iPhone 16</td><td>6+128GB</td><td>420.000</td><td>580.000</td><td>8</td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>ACC-2025-001</td><td>Anker</td><td>Power Bank 20K</td><td>20000mAh</td><td>18.500</td><td>25.000</td><td>30</td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
+            `;
+        }
+
+        // ================================================================
+        //  POS
+        // ================================================================
+        let posCart = [];
+        let html5QrCode = null;
+
+        function renderPOS() {
+            document.getElementById('posStoreName').textContent = 'ROBIUL ELECTRONICS';
+            const list = document.getElementById('posProductList');
+            list.innerHTML = `
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 0;">
+                    <div style="background:var(--bg-body);padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;">
+                        <div><strong>Samsung Galaxy S24</strong><br><span class="text-muted" style="font-size:0.75rem;">450.000 OMR</span></div>
+                        <button class="btn btn-accent btn-sm" onclick="posAddToCart('Samsung Galaxy S24', 450)"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div style="background:var(--bg-body);padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;">
+                        <div><strong>iPhone 16</strong><br><span class="text-muted" style="font-size:0.75rem;">580.000 OMR</span></div>
+                        <button class="btn btn-accent btn-sm" onclick="posAddToCart('iPhone 16', 580)"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div style="background:var(--bg-body);padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;">
+                        <div><strong>Power Bank 20K</strong><br><span class="text-muted" style="font-size:0.75rem;">25.000 OMR</span></div>
+                        <button class="btn btn-accent btn-sm" onclick="posAddToCart('Power Bank 20K', 25)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            `;
+            renderPosCart();
+            initScanner();
+        }
+
+        function posAddToCart(name, price) {
+            const existing = posCart.find(i => i.name === name);
+            if (existing) { existing.qty += 1; } else { posCart.push({ name, price, qty: 1 }); }
+            renderPosCart();
+            showToast('Added: ' + name, 'success');
+        }
+
+        function renderPosCart() {
+            const container = document.getElementById('posCartItems');
+            const count = posCart.reduce((s, i) => s + i.qty, 0);
+            document.getElementById('posCartCount').textContent = count + ' items';
+            if (posCart.length === 0) {
+                container.innerHTML = '<div class="empty-state">🛒 Cart is empty</div>';
+                document.getElementById('posSubtotal').textContent = '0.000 OMR';
+                document.getElementById('posVat').textContent = '0.000 OMR';
+                document.getElementById('posTotal').textContent = '0.000 OMR';
+                return;
+            }
+            let html = '';
+            let subtotal = 0;
+            posCart.forEach((item, idx) => {
+                const line = item.price * item.qty;
+                subtotal += line;
+                html += `
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-light);">
+                        <div><strong>${item.name}</strong><br><span class="text-muted" style="font-size:0.75rem;">${item.price.toFixed(3)} OMR × ${item.qty}</span></div>
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <span style="font-weight:700;">${line.toFixed(3)} OMR</span>
+                            <button class="btn btn-danger btn-sm" onclick="posRemoveItem(${idx})"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            const vat = subtotal * 0.05;
+            const total = subtotal + vat;
+            document.getElementById('posSubtotal').textContent = subtotal.toFixed(3) + ' OMR';
+            document.getElementById('posVat').textContent = vat.toFixed(3) + ' OMR';
+            document.getElementById('posTotal').textContent = total.toFixed(3) + ' OMR';
+        }
+
+        function posRemoveItem(idx) {
+            posCart.splice(idx, 1);
+            renderPosCart();
+        }
+
+        document.getElementById('posClearCartBtn').addEventListener('click', function() {
+            posCart = [];
+            renderPosCart();
+            showToast('Cart cleared', '');
+        });
+
+        document.getElementById('posCheckoutBtn').addEventListener('click', function() {
+            if (posCart.length === 0) { showToast('Cart is empty!', 'error'); return; }
+            const total = posCart.reduce((s, i) => s + i.price * i.qty, 0) * 1.05;
+            showToast('Checkout complete! Total: ' + total.toFixed(3) + ' OMR', 'success');
+            posCart = [];
+            renderPosCart();
+        });
+
+        document.getElementById('posManualAddBtn').addEventListener('click', function() {
+            const input = document.getElementById('posManualBarcode');
+            const val = input.value.trim();
+            if (!val) { showToast('Enter a barcode', 'error'); return; }
+            posAddToCart(val, 99.999);
+            input.value = '';
+        });
+
+        // ===== SCANNER =====
+        function initScanner() {
+            const container = document.getElementById('scanner-container');
+            if (!container) return;
+            try {
+                if (html5QrCode) { html5QrCode.clear(); }
+                html5QrCode = new Html5Qrcode('scanner-container');
+                const config = { fps: 15, qrbox: { width: 240, height: 140 } };
+                html5QrCode.start({ facingMode: 'environment' }, config,
+                    (decodedText) => {
+                        const bc = decodedText.trim();
+                        posAddToCart(bc, 99.999);
+                        document.getElementById('posScannerStatus').textContent = '✅ Scanned: ' + bc;
+                        setTimeout(() => {
+                            document.getElementById('posScannerStatus').textContent =
+                            '📷 Camera ready — point at barcode';
+                        }, 1200);
+                    },
+                    (err) => { /* ignore */ }
+                ).then(() => {
+                    document.getElementById('posScannerStatus').textContent = '✅ Camera active — scanning';
+                    document.getElementById('posScannerDot').className = 'dot active';
+                }).catch(err => {
+                    document.getElementById('posScannerStatus').textContent = '⚠️ Camera unavailable — manual only';
+                    document.getElementById('posScannerDot').className = 'dot';
+                });
+            } catch (e) {
+                document.getElementById('posScannerStatus').textContent = '⚠️ Scanner library not loaded';
+                document.getElementById('posScannerDot').className = 'dot';
+            }
+        }
+
+        // ================================================================
+        //  ACCOUNTS
+        // ================================================================
+        function renderAccounts() {
+            document.getElementById('accTotalRevenue').textContent = '4,850.000 OMR';
+            document.getElementById('accTotalCost').textContent = '3,150.000 OMR';
+            document.getElementById('accNetProfit').textContent = '1,700.000 OMR';
+            const tbody = document.getElementById('accountsTableBody');
+            tbody.innerHTML = `
+                <tr><td>2025-03-22 10:30</td><td>3</td><td>450.000 OMR</td><td>320.000 OMR</td><td>130.000 OMR</td><td>admin</td></tr>
+                <tr><td>2025-03-22 11:15</td><td>2</td><td>580.000 OMR</td><td>420.000 OMR</td><td>160.000 OMR</td><td>admin</td></tr>
+                <tr><td>2025-03-22 14:20</td><td>5</td><td>125.000 OMR</td><td>92.500 OMR</td><td>32.500 OMR</td><td>staff</td></tr>
+            `;
+        }
+
+        // ================================================================
+        //  EXPENSES
+        // ================================================================
+        function renderExpenses() {
+            const tbody = document.getElementById('expensesTableBody');
+            tbody.innerHTML = `
+                <tr><td>2025-03-22</td><td>Utilities</td><td>Electricity bill</td><td>45.000 OMR</td><td><span class="badge-status active">Paid</span></td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>2025-03-21</td><td>Rent</td><td>Shop monthly rent</td><td>350.000 OMR</td><td><span class="badge-status pending">Pending</span></td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
+            `;
+        }
+
+        // ================================================================
+        //  SERVICES
+        // ================================================================
+        function renderServices() {
+            const tbody = document.getElementById('servicesTableBody');
+            tbody.innerHTML = `
+                <tr><td>Internet Subscription</td><td>Ahmed Ali</td><td>15.000 OMR</td><td><span class="badge-status active">Active</span></td><td>1.500 OMR</td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>Utility Bill</td><td>Mabellah Shop</td><td>45.000 OMR</td><td><span class="badge-status inactive">Inactive</span></td><td>—</td>
+                    <td><button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td></tr>
+            `;
+        }
+
+        // ================================================================
+        //  REPORTS
+        // ================================================================
+        function renderReports() {}
+
+        // ================================================================
+        //  RECYCLE
+        // ================================================================
+        function renderRecycle() {
+            document.getElementById('recycleCount').textContent = '2 items';
+            const tbody = document.getElementById('recycleTableBody');
+            tbody.innerHTML = `
+                <tr><td>Product</td><td>iPhone 15 (128GB)</td><td>2025-03-20 15:30</td>
+                    <td><button class="btn btn-success btn-sm"><i class="fas fa-undo"></i> Restore</button> <button class="btn btn-danger btn-sm"><i class="fas fa-fire"></i> Purge</button></td></tr>
+                <tr><td>Invoice</td><td>INV-2025-009</td><td>2025-03-21 09:15</td>
+                    <td><button class="btn btn-success btn-sm"><i class="fas fa-undo"></i> Restore</button> <button class="btn btn-danger btn-sm"><i class="fas fa-fire"></i> Purge</button></td></tr>
+            `;
+        }
+
+        // ================================================================
+        //  BACKUP
+        // ================================================================
+        function renderBackup() {}
+
+        document.getElementById('backupGenerateBtn').addEventListener('click', function() {
+            showToast('Backup generated: robiul_backup_2025-03-22.sql', 'success');
+        });
+
+        document.getElementById('restoreExecuteBtn').addEventListener('click', function() {
+            const fileInput = document.getElementById('restoreFileInput');
+            if (!fileInput.files || fileInput.files.length === 0) {
+                showToast('Please select a .sql file', 'error');
+                return;
+            }
+            showToast('Database restored from ' + fileInput.files[0].name, 'success');
+        });
+
+        // ================================================================
+        //  SETTINGS
+        // ================================================================
+        function renderSettings() {}
+
+        document.getElementById('setSaveStore').addEventListener('click', function() {
+            showToast('Store information saved', 'success');
+        });
+
+        document.getElementById('setSaveTax').addEventListener('click', function() {
+            showToast('Tax settings saved', 'success');
+        });
+
+        document.getElementById('setClearAllData').addEventListener('click', function() {
+            if (confirm('⚠️ This will DELETE ALL data. Are you sure?')) {
+                showToast('All data cleared (demo)', 'success');
+            }
+        });
+
+        // ================================================================
+        //  DEVELOPER SETTINGS
+        // ================================================================
+        document.getElementById('saveDevSettings').addEventListener('click', function() {
+            const apiUrl = document.getElementById('devApiUrl').value;
+            const apiKey = document.getElementById('devApiKey').value;
+            const apiSecret = document.getElementById('devApiSecret').value;
+            const theme = document.getElementById('devThemeSelect').value;
+            const debug = document.getElementById('devDebugMode').value;
+            const cacheTtl = document.getElementById('devCacheTtl').value;
+
+            // Apply theme
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+
+            showToast('Developer settings saved! Theme: ' + theme, 'success');
+        });
+
+        document.getElementById('resetAppBtn').addEventListener('click', function() {
+            if (confirm('⚠️ This will reset all application data. Are you sure?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                showToast('App data reset. Reloading...', 'success');
+                setTimeout(() => location.reload(), 1500);
+            }
+        });
+
+        // ================================================================
+        //  IMAGE EDITOR
+        // ================================================================
+        const imgEditorModal = document.getElementById('imageEditorModal');
+        const closeEditorBtn = document.getElementById('closeEditorBtn');
+        const canvas = document.getElementById('imgEditorCanvas');
+        const ctx = canvas.getContext('2d');
+        let imgObject = new Image();
+        let rotation = 0;
+
+        imgObject.src = 'https://via.placeholder.com/400x300/0a192f/f5a623?text=Product+Image';
+
+        imgObject.onload = function() {
+            drawImage();
+        };
+
+        function drawImage() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate(rotation * Math.PI / 180);
+            ctx.drawImage(imgObject, -imgObject.width / 2, -imgObject.height / 2, imgObject.width, imgObject.height);
+            ctx.restore();
+        }
+
+        document.getElementById('rotateBtn').addEventListener('click', function() {
+            rotation = (rotation + 90) % 360;
+            drawImage();
+        });
+
+        document.getElementById('cropBtn').addEventListener('click', function() {
+            showToast('Crop tool activated (simulated)', '');
+        });
+
+        document.getElementById('brightnessBtn').addEventListener('click', function() {
+            showToast('Brightness adjustment (simulated)', '');
+        });
+
+        document.getElementById('contrastBtn').addEventListener('click', function() {
+            showToast('Contrast adjustment (simulated)', '');
+        });
+
+        document.getElementById('resetImgBtn').addEventListener('click', function() {
+            rotation = 0;
+            drawImage();
+            showToast('Image reset', 'success');
+        });
+
+        document.getElementById('uploadImageBtn').addEventListener('click', function() {
+            showToast('Image upload dialog (simulated)', '');
+        });
+
+        document.getElementById('saveImageBtn').addEventListener('click', function() {
+            showToast('Image changes saved successfully!', 'success');
+            closeEditor();
+        });
+
+        function openEditor() {
+            imgEditorModal.classList.add('open');
+        }
+
+        function closeEditor() {
+            imgEditorModal.classList.remove('open');
+        }
+
+        closeEditorBtn.addEventListener('click', closeEditor);
+        imgEditorModal.addEventListener('click', function(e) {
+            if (e.target === this) closeEditor();
+        });
+
+        // ================================================================
+        //  INIT
+        // ================================================================
+        function init() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('devThemeSelect').value = savedTheme;
+
+            setLanguage('en');
+            navigateTo('dashboard');
+            document.getElementById('dashboardDate').textContent = new Date().toLocaleString();
+
+            // Add a sample product image edit trigger
+            document.querySelector('#inventoryTableBody')?.addEventListener('click', function(e) {
+                if (e.target.closest('.btn-primary') && e.target.closest('tr')) {
+                    openEditor();
+                }
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>
