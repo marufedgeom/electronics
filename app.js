@@ -20,6 +20,87 @@ function getProductImage(productId) {
     const productImages = JSON.parse(localStorage.getItem('productImages') || '{}');
     return productImages[productId] || defaultImage;
 }
+// ===== DEVELOPER SETTINGS LOGIC =====
+document.getElementById('saveDevSettings')?.addEventListener('click', function() {
+    const apiUrl = document.getElementById('devApiUrl').value;
+    const apiKey = document.getElementById('devApiKey').value;
+    const apiSecret = document.getElementById('devApiSecret').value;
+    const theme = document.getElementById('devThemeSelect').value;
+    const debug = document.getElementById('devDebugMode').value;
+    const cacheTtl = document.getElementById('devCacheTtl').value;
+
+    // সেটিংস localStorage-এ সংরক্ষণ
+    const settings = {
+        apiUrl, apiKey, apiSecret, theme, debug, cacheTtl
+    };
+    localStorage.setItem('devSettings', JSON.stringify(settings));
+
+    // থিম প্রয়োগ
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+
+    showToast('Developer settings saved!', 'success');
+    console.log('Settings:', settings);
+});
+
+// সেটিংস লোড করা (অ্যাপ শুরুতে)
+function loadDevSettings() {
+    const saved = localStorage.getItem('devSettings');
+    if (saved) {
+        const settings = JSON.parse(saved);
+        document.getElementById('devApiUrl').value = settings.apiUrl || 'https://erp.yourcompany.com';
+        document.getElementById('devApiKey').value = settings.apiKey || 'sk_test_xxxxxxxx';
+        document.getElementById('devApiSecret').value = settings.apiSecret || 'sk_test_yyyyyyyy';
+        document.getElementById('devThemeSelect').value = settings.theme || 'light';
+        document.getElementById('devDebugMode').value = settings.debug || '0';
+        document.getElementById('devCacheTtl').value = settings.cacheTtl || '3600';
+    }
+}
+
+// App init-এ কল করুন
+loadDevSettings();
+// Debug লগ ফাংশন
+function debugLog(message, data = null) {
+    const debugMode = localStorage.getItem('devSettings') ? 
+        JSON.parse(localStorage.getItem('devSettings')).debug : '0';
+    if (debugMode === '1') {
+        console.log('[DEBUG]', message, data || '');
+    }
+}
+
+// ব্যবহারের উদাহরণ
+debugLog('User clicked POS', { page: 'pos' });
+// API কল ফাংশন (Guzzle বা fetch ব্যবহার করে)
+async function callAPI(endpoint, method = 'GET', data = null) {
+    const settings = JSON.parse(localStorage.getItem('devSettings') || '{}');
+    const baseUrl = settings.apiUrl || 'https://erp.yourcompany.com';
+    const apiKey = settings.apiKey || '';
+    const apiSecret = settings.apiSecret || '';
+
+    const url = `${baseUrl}/api/method/${endpoint}`;
+    const headers = {
+        'Authorization': `token ${apiKey}:${apiSecret}`,
+        'Content-Type': 'application/json'
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: method,
+            headers: headers,
+            body: data ? JSON.stringify(data) : null
+        });
+        const result = await response.json();
+        debugLog('API Response', result);
+        return result;
+    } catch (error) {
+        debugLog('API Error', error);
+        showToast('API Error: ' + error.message, 'error');
+        return null;
+    }
+}
+
+// ব্যবহারের উদাহরণ
+// callAPI('erpnext.stock.get_item_details', 'GET', { item_code: 'AL-PROFILE-001' });
 // ===== LANGUAGE DICTIONARY =====
 const LANG = {
     en: {
