@@ -246,7 +246,24 @@ document.getElementById('posCheckoutBtn').addEventListener('click', () => {
     showToast('Checkout complete! Total: ' + total.toFixed(3) + ' OMR', 'success');
     posCart = []; renderPosCart();
 });
+// ===== INVENTORY IMAGE SETUP =====
+// এই ফাংশনটি inventory page-এ ইমেজ দেখাবে
+function renderInventoryImages() {
+    const rows = document.querySelectorAll('#inventoryTableBody tr');
+    rows.forEach((row, index) => {
+        // প্রতিটি row-এ ইমেজ কলাম যোগ করুন
+        const imageCell = document.createElement('td');
+        const imageUrl = `https://via.placeholder.com/50x50/0a192f/f5a623?text=Item+${index+1}`;
+        imageCell.innerHTML = `<img src="${imageUrl}" alt="Product" style="width:40px;height:40px;border-radius:8px;object-fit:cover;" />`;
+        row.prepend(imageCell);
+    });
+}
 
+// Inventory render করার সময় এই ফাংশন কল করুন
+function renderInventory() {
+    // ... আপনার existing কোড ...
+    renderInventoryImages(); // এই লাইনটি যোগ করুন
+}
 // ===== SCANNER =====
 let html5QrCode = null;
 function initScanner() {
